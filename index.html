@@ -327,7 +327,7 @@ if(g){$('#guest').innerHTML='<small>Con cariño para</small><b></b>';$('#guest b
 const song=$('#song'),im=$('.env');
 function bb(m){try{const c=document.createElement('canvas'),w=c.width=m.naturalWidth,h=c.height=m.naturalHeight,x=c.getContext('2d');x.drawImage(m,0,0);const d=x.getImageData(0,0,w,h).data;let a=w,r=0,b=h,t=0;for(let j=0;j<h;j+=2)for(let i=0;i<w;i+=2)if(d[(j*w+i)*4+3]>160){if(i<a)a=i;if(i>r)r=i;if(j<b)b=j;if(j>t)t=j}if(!(r>a&&t>b))return null;let a2=w,r2=0;for(let j=Math.floor(t-.08*(t-b));j<=t;j+=2)for(let i=0;i<w;i+=2)if(d[(j*w+i)*4+3]>160){if(i<a2)a2=i;if(i>r2)r2=i}return{w,h,a,r,b,t,a2,r2}}catch(e){return null}}
 const when=(m,f)=>m.complete&&m.naturalWidth?f():m.addEventListener('load',f,{once:true});
-const OW=.70;let Bc,Bo;
+const OW=.50;let Bc,Bo;
 function lay(){}
 function lift(){const s=$('#stage').getBoundingClientRect(),H=innerHeight,up=Bc&&Bo?s.width*Math.max((Bo.t-Bo.b)/(Bo.r-Bo.a)*OW-(Bc.t-Bc.b)/(Bc.r-Bc.a),0):0,tot=up+s.height+H*.04+$('#names').offsetHeight,t0=H*.04,room=H-H*.08-70-t0;document.documentElement.style.setProperty('--lift',(t0+Math.max((room-tot)/2,0)-(s.top-up))+'px')}
 when(im,()=>{const o=bb(im);if(!o)return;Bc=o;const k=o.r-o.a,s=im.style;s.width=o.w/k*100+'%';s.marginLeft=-o.a/k*100+'%';s.marginTop=-o.b/k*100+'%';s.marginBottom=-(o.h-o.t)/k*100+'%';lay()});
